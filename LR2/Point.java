@@ -25,6 +25,31 @@ public class Point {
         return this.y;
     }
 
+    public Point add(Point point) {
+        this.setX(this.getX() + point.getX());
+        this.setY(this.getY() + point.getY());
+        return this;
+    }
+
+    public Point submission(Point point) {
+        this.setX(this.getX() - point.getX());
+        this.setY(this.getY() - point.getY());
+        return this;
+    }
+
+    public Point multiply(Point point) {
+        this.setX(this.getX() * point.getX());
+        this.setY(this.getY() * point.getY());
+        return this;
+    }
+
+    public Point division(Point point) {
+        this.setX(this.getX() / point.getX());
+        this.setY(this.getY() / point.getY());
+        return this;
+    }
+
+
     public String toString() {
         return "(" + this.x + ", " + this.y + ")";
     }

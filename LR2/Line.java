@@ -66,4 +66,28 @@ public class Line {
 
         return new Point(xIntersect, yIntersect);
     }
+
+    public Line add(Line line) {
+        this.setP1(this.getP1().add(line.getP2()));
+        this.setP2(this.getP2().add(line.getP2()));
+        return this;
+    }
+
+    public Line submission(Line line) {
+        this.setP1(this.getP1().submission(line.getP2()));
+        this.setP2(this.getP2().submission(line.getP2()));
+        return this;
+    }
+
+    public Line multiply(Line line) {
+        this.setP1(this.getP1().multiply(line.getP2()));
+        this.setP2(this.getP2().multiply(line.getP2()));
+        return this;
+    }
+
+    public Line division(Line line) {
+        this.setP1(this.getP1().division(line.getP2()));
+        this.setP2(this.getP2().division(line.getP2()));
+        return this;
+    }
 };
