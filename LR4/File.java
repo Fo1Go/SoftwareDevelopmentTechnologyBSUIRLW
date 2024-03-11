@@ -8,11 +8,10 @@ public class File extends AbstractFile {
     private Long size;
     private String content = null;
 
-    public File(Catalog catalog, String name, Long size, String content) {
+    public File(Catalog catalog, String name, Long size) {
         this.size = size;
         this.catalog = catalog;
         this.name = name;
-        this.content = content;
     }
 
     @Override

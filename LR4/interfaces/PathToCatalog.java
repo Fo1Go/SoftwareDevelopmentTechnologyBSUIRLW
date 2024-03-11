@@ -1,6 +1,6 @@
 package LR4.interfaces;
 
-import java.nio.file.Path;
+import LR4.Catalog;
 
 public interface PathToCatalog {
     public String getLocation();

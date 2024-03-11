@@ -5,8 +5,8 @@ import LR4.interfaces.Executable;
 public class ExecutableFile extends File implements Executable {
     private boolean isExecutable = true;
     private String version;
-    public ExecutableFile(Catalog catalog, String name, Long size, String content) {
-        super(catalog, name, size, content);
+    public ExecutableFile(Catalog catalog, String name, Long size) {
+        super(catalog, name, size);
     }
 
     @Override

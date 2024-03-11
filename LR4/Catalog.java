@@ -7,6 +7,7 @@ public class Catalog extends AbstractCatalog {
     private String location = null;
     private String name = null;
     private Long size;
+    private Catalog SubCatalog = null;
     private ArrayList<File> files = new ArrayList<File>();
     private ArrayList<Catalog> catalogs = new ArrayList<Catalog>();
 
@@ -88,13 +89,13 @@ public class Catalog extends AbstractCatalog {
     }
 
     public ArrayList<File> findFilesByExtension(String extension, boolean recursively) {
-        ArrayList<File> foundFiles = new ArrayList<File>();
+        ArrayList<File> foundFiles = new ArrayList<>();
         for (File file : this.files) {
             if (file.getName().endsWith(extension)) {
                 foundFiles.add(file);
             }
         }
-        if (recursively && !this.catalogs.isEmpty()) {
+        if (recursively && !(this.catalogs.isEmpty())) {
             for (Catalog catalog : this.catalogs) {
                 foundFiles.addAll(catalog.findFilesByExtension(extension, true));
             }
@@ -112,7 +113,5 @@ public class Catalog extends AbstractCatalog {
     }
 
     @Override
-    public String toString() {
-        return "File(filename: " + this.name + ", size: " + this.size.toString() + ")";
-    }
+    public String toString() {return "File(filename: " + this.name + ", size: " + this.size.toString() + ")";}
 }
