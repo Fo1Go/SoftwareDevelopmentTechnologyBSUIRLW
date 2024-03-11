@@ -10,47 +10,79 @@ package LR6;
 // может забронировать эти же билеты.
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LR6 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        ArrayList<Client> clients = new ArrayList<>();
+        ArrayList<Flight> flights = new ArrayList<>();
+        flights.add(new Flight("Boing 777889", "Minsk", "Astana", 122, 1000));
+        flights.add(new Flight("Boing 777889", "Minsk", "Astana", 122, 1000));
+        flights.add(new Flight("Boing 777889", "Kiev", "Moscow", 122, 1000));
+        flights.add(new Flight("Boing 777889", "Berlin", "Minsk", 122, 1000));
+        flights.add(new Flight("Boing 777889", "Copenhagen", "Minsk", 122, 1000));
+        flights.add(new Flight("Boing 777889", "Moscow", "Minsk", 122, 1000));
 
-        ArrayList<Client> allClients = new ArrayList<Client>();
-        allClients.add(new Client("Usevalad", 18, 8 * 60));
-        allClients.add(new Client("NN", 25, 12 * 60));
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            int time = ThreadLocalRandom.current().nextInt(5, 61);
+            Thread TUSER = newThreadCheckInToReservation(time, tickets, clients, flights);
+            TUSER.start();
+        }
 
-        Flight[] flights = {
-                new Flight("Boing 777889", "Minsk", "Astana", 122),
-                new Flight("Boing 777889", "Minsk", "Astana", 122),
-                new Flight("Boing 777889", "Kiev", "Moscow", 122),
-                new Flight("Boing 777889", "Berlin", "Minsk", 122),
-                new Flight("Boing 777889", "Copenhagen", "Minsk", 122),
-                new Flight("Boing 777889", "Moscow", "Minsk", 122)
-        };
-        ArrayList<Flight> allFlight = new ArrayList<Flight>(Arrays.stream(flights).toList());
-        ArrayList<Ticket> allTickets = new ArrayList<Ticket>();
-        allTickets.add(new Ticket(allFlight.getFirst(), allClients.getFirst()));
-        System.out.println("All tickets: ");
-        allTickets.forEach(System.out::println);
-        int duration = 1;
+        int durationCheckReservation = 1;
+        int durationCheckPayment = durationCheckReservation * 10;
         String userInput;
-        System.out.println("HELLO MY DEAR FRIEND!!!");
-        Thread thread = newThread(allTickets, duration);
-        do {
-            if (!thread.isAlive()) {
-                (thread = newThread(allTickets, duration)).start();
+        Thread t1 = newThreadCheckReservation(tickets, durationCheckReservation);
+        Thread t2 = newThreadCheckPayment(tickets, durationCheckPayment);
+        t1.start();
+        t2.start();
+        System.out.println("Enter 1 to watch all tickets: ");
+        boolean is_running = true;
+        Scanner scanner = new Scanner(System.in);
+        while (is_running) {
+            userInput = scanner.next();
+            if (userInput.equals("/q")) {
+                is_running = false;
+                break;
+            } else if (userInput.charAt(0) == '1') {
+                watchAllTickets(tickets);
+            } else if (userInput.charAt(0) == '2') {
+                watchAllClients(clients);
+            } else {
+                System.out.println("Unknown command!");
             }
-            userInput = scanner.nextLine();
-        } while (!Objects.equals(userInput, "/q"));
+        }
+
     }
 
-    public static Thread newThread(ArrayList<Ticket> allTickets, int duration) {
-        ThreadCheckReservation thread = new ThreadCheckReservation();
-        thread.setDuration(duration);
-        thread.setTickets(allTickets);
+    public static Thread newThreadCheckReservation(ArrayList<Ticket> allTickets, int duration) {
+        ThreadCheckReservation thread = new ThreadCheckReservation(allTickets, duration);
         return new Thread(thread);
+    }
+
+    public static Thread newThreadCheckPayment(ArrayList<Ticket> allTickets, int duration) {
+        ThreadCheckPayment thread = new ThreadCheckPayment(allTickets, duration);
+        return new Thread(thread);
+    }
+
+    public static Thread newThreadCheckInToReservation(int time_in_reservation,
+                                     ArrayList<Ticket> tickets,
+                                     ArrayList<Client> clients,
+                                     ArrayList<Flight> flights) {
+        ThreadAddUser thread = new ThreadAddUser(time_in_reservation, tickets, clients, flights);
+        return new Thread(thread);
+    }
+
+    public static void watchAllTickets(List<Ticket> tickets) {
+        System.out.println("All tickets:");
+        tickets.forEach(n -> System.out.println(n.toString() + " Is paid?: " + n.getPaidStatus()));
+    }
+
+    public static void watchAllClients(List<Client> clients) {
+        System.out.println("All tickets:");
+        clients.forEach(n -> System.out.println(n.toString()));
     }
 }

@@ -1,27 +1,49 @@
 package LR6;
 
-class Ticket {
+public class Ticket {
     private int reservationTime = 10 * 60;
     private Flight flight;
     private Client person;
-    private boolean is_paid = false;
+    private int countTickets;
+    private boolean is_paid;
 
-    public Ticket(Flight flight, Client person) {
-        this.flight = flight;
-        this.person = person;
+    public Ticket(Flight flight, Client person, int countTickets) {
+        this.setClient(person);
+        this.setFlight(flight);
+        this.countTickets = countTickets;
+        this.is_paid = false;
     }
 
-    public Ticket() {
-        this.flight = null;
-        this.person = null;
+    public int getCountTickets() {
+        return this.countTickets;
     }
 
-    public boolean isPaid() {
+    public void setCountTickets(int cntTickets) {
+        this.countTickets = cntTickets;
+    }
+
+    public void setFlight(Flight flt) {
+        this.flight = flt;
+    }
+
+    public Flight getFlight() {
+        return this.flight;
+    }
+
+    public void setClient(Client prs) {
+        this.person = prs;
+    }
+
+    public Client getClient() {
+        return this.person;
+    }
+
+    public boolean getPaidStatus() {
         return this.is_paid;
     }
 
-    public void payTheBill() {
-        this.is_paid = true;
+    public void setPaidStatus(boolean status) {
+        this.is_paid = status;
     }
 
     public boolean isReservationOut() {
@@ -46,4 +68,5 @@ class Ticket {
                 + flight.getFromPlace() + ", "
                 + flight.getToPlace() + ")";
     }
-};
+}
+
