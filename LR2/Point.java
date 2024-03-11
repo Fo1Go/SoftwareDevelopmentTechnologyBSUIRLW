@@ -10,11 +10,15 @@ public class Point {
     }
 
     public void setX(double xVal) {
-        this.x = xVal;
+        this.x = Math.ceil(xVal * 100) / 100;
     }
 
     public void setY(double yVal) {
-        this.y = yVal;
+        this.y = Math.ceil(yVal * 100) / 100;
+    }
+
+    private boolean isCloseToInt(double value) {
+        return ((value - (int) (value) > -0.005) || (value - (int) (value) < 0.005));
     }
 
     public double getX() {
@@ -49,8 +53,15 @@ public class Point {
         return this;
     }
 
-
     public String toString() {
-        return "(" + this.x + ", " + this.y + ")";
+        String Xvalue = String.valueOf(this.getX());
+        String Yvalue = String.valueOf(this.getY());
+        if (this.isCloseToInt(this.getX())) {
+            Xvalue = String.valueOf((int) this.getX());
+        }
+        if (this.isCloseToInt(this.getY())) {
+            Yvalue = String.valueOf((int) this.getY());
+        }
+        return "(" + Xvalue + ", " + Yvalue + ")";
     }
 };

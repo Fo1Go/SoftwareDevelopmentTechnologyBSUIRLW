@@ -28,7 +28,7 @@ public class Line {
     }
 
     public String toString() {
-        return "Line: " + p1.toString() + " - " + p2.toString();
+        return p1.toString() + " / " + p2.toString();
     }
 
     public Point intersectionWithXAxis() {
