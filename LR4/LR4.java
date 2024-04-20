@@ -20,10 +20,6 @@ package LR4;
 // реализовать расчет объема занимаемой памяти файлами в папке,
 // вывести иерархию версий по названию ПО.
 
-
-import LR4.Catalog;
-import LR4.File;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,49 +40,90 @@ public class LR4 {
                     4. Find files by extension
                     """
             );
-
             command = scanner.nextInt();
 
             if (command == 0) {
                 isRunning = false;
             } else if (command == 1) {
-                System.out.println("Enter catalog name: ");
-                String name = scanner.next();
-
-                Catalog catalog = utils.userChooseCatalog(root);
-
-                catalog.appendCatalog(new Catalog(catalog.getLocation(), name));
-            } else if (command == 2) {
-                System.out.println("Enter file name: ");
-                String name = scanner.next();
-
-                Catalog catalog = utils.userChooseCatalog(root);
-
-                System.out.println("Enter size: ");
-                Long size = scanner.nextLong();
-
-                catalog.appendFile(new File(catalog, name, size));
-            } else if (command == 3) {
-                ArrayList<Catalog> catalogs = utils.getListOfAllCatalogs(root);
-                if (catalogs.isEmpty())
-                    catalogs.addFirst(root);
-                for (Catalog catalog : catalogs) {
-                    System.out.println(catalog.getName() + " catalog size: " + catalog.getSize());
-                    for (File file : catalog.getFiles()) {
-                        System.out.println("  " + file.getName());
+                String name = null;
+                Catalog catalog = null;
+                while (true) {
+                    try {
+                        if (name == null) {
+                            System.out.println("Enter catalog name: ");
+                            name = scanner.next();
+                        }
+                        if (catalog == null) {
+                            catalog = utils.userChooseCatalog(root);
+                        }
+                        catalog.appendCatalog(new Catalog(catalog.getLocation(), name));
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
                 }
+
+            } else if (command == 2) {
+                String name = null;
+                Catalog catalog = null;
+                Long size = null;
+                while (true) {
+                    try {
+                        if (name == null) {
+                            System.out.println("Enter catalog name: ");
+                            name = scanner.next();
+                        }
+                        if (catalog == null) {
+                            catalog = utils.userChooseCatalog(root);
+                        }
+                        if (size == null) {
+                            System.out.println("Enter size: ");
+                            size = Long.parseLong(scanner.next());
+                        }
+
+                        catalog.appendFile(new File(catalog, name, size));
+                        break;
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
+            } else if (command == 3) {
+                try {
+                    ArrayList<Catalog> catalogs = utils.getListOfAllCatalogs(root);
+                    if (catalogs.isEmpty())
+                        catalogs.addFirst(root);
+                    for (Catalog catalog : catalogs) {
+                        System.out.println(catalog.getName() + " catalog size: " + catalog.getSize());
+                        for (File file : catalog.getFiles()) {
+                            System.out.println("  " + file.getName());
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             } else if (command == 4) {
-                Catalog catalog = utils.userChooseCatalog(root);
-
-                System.out.println("Enter file extension: ");
-                String extention = scanner.next();
-
-                System.out.println("Recursion?(true/false): ");
-                boolean isRecurse = scanner.nextBoolean();
-
-                for (File file : catalog.findFilesByExtension(extention, isRecurse))  {
-                    System.out.println(file.getName() + " file size: " + file.getSize());
+                Catalog catalog = null;
+                String extention = null;
+                Boolean isRecurse = null;
+                while (true) {
+                    try {
+                        if (catalog == null) {
+                            catalog = utils.userChooseCatalog(root);
+                        }
+                        if (extention == null) {
+                            System.out.println("Enter file extension: ");
+                            extention = scanner.next();
+                        }
+                        if (isRecurse == null) {
+                            System.out.println("Recursion?(true/false): ");
+                            isRecurse = scanner.nextBoolean();
+                        }
+                        for (File file : catalog.findFilesByExtension(extention, isRecurse)) {
+                            System.out.println(file.getName() + " file size: " + file.getSize());
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                 }
             } else {
                 System.out.println("Unknown command!");

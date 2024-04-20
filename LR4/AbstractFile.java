@@ -15,6 +15,4 @@ abstract public class AbstractFile implements LocationInCatalog, Sizable, Nameab
 
     abstract public Long getSize();
     abstract public void setSize(Long size);
-    abstract public String getContent();
-    abstract public void setContent(Long content);
 }

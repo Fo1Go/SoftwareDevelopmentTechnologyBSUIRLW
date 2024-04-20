@@ -6,7 +6,6 @@ public class File extends AbstractFile {
     private Catalog catalog = null;
     private String name = null;
     private Long size;
-    private String content = null;
 
     public File(Catalog catalog, String name, Long size) {
         this.size = size;
@@ -42,16 +41,6 @@ public class File extends AbstractFile {
     @Override
     public void setSize(Long size) {
         this.size = size;
-    }
-
-    @Override
-    public String getContent() {
-        return this.content;
-    }
-
-    @Override
-    public void setContent(Long content) {
-        this.content = String.valueOf(content);
     }
 
     public boolean equals(File object) {

@@ -14,7 +14,7 @@ public class LR5 {
         boolean is_running = true;
         String number;
         System.out.println("Enter numbers through enter: ");
-        advancedArrayList<Double> input = new advancedArrayList<Double>();
+        advancedArrayList<Double> input = new advancedArrayList<>();
         while(is_running) {
             Scanner scanner = new Scanner(System.in);
             number = scanner.nextLine();

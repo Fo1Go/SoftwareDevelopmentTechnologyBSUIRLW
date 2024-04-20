@@ -31,6 +31,7 @@ public class ThreadAddUser extends Thread {
 
             clients.add(client);
             tickets.add(ticket);
+            System.out.println("Reservation: " + ticket);
         } catch (InterruptedException e) {
             System.out.println("ERROR!");
         }

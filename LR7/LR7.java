@@ -11,6 +11,13 @@ package LR7;
 
 public class LR7 {
     public static void main(String[] args) {
-
+        try {
+            Client client = new Client();
+            client.startConnection("127.0.0.1", 8080);
+            String response = client.sendMessage("hello server");
+            System.out.println("hello client" + response);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
