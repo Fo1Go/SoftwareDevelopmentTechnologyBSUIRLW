@@ -19,8 +19,7 @@ public class Files {
     @Column(length = 2048, name = "size")
     private Long size;
 
-    public Files(String name, Long size) {
-        this.name = name;
-        this.size = size;
-    }
+    @JoinColumn(name = "catalog_id")
+    @ManyToOne
+    private Catalogs subCatalog;
 }

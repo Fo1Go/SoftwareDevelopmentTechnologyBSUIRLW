@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
 
-        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/filetransferjava</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.username">postgres</property>
         <property name="connection.password">postgres</property>
@@ -16,6 +16,6 @@
         <property name="format_sql">true</property>
 
         <mapping class="com.RemoteFileManager.Models.Files"/>
-
+        <mapping class="com.RemoteFileManager.Models.Catalogs"/>
     </session-factory>
 </hibernate-configuration>

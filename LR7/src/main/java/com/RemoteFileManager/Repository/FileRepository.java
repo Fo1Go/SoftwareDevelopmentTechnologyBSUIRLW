@@ -7,17 +7,16 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import java.util.List;
 
-public class FilesRepository {
-    private SessionFactory sessionFactory;
+public class FileRepository {
     private Session session;
 
-    public FilesRepository() {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-        session = sessionFactory.openSession();
+    public FileRepository() {
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        session = factory.openSession();
     }
 
     public List<Files> getAllFiles() {
-        Query<Files> query = sessionFactory.getCurrentSession().createQuery("from files", Files.class);
+        Query<Files> query = session.createQuery("from files", Files.class);
         return query.getResultList();
     }
 
@@ -28,7 +27,7 @@ public class FilesRepository {
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error" + e.getMessage());
             session.getTransaction().rollback();
             return false;
         }
@@ -44,7 +43,7 @@ public class FilesRepository {
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error" + e.getMessage());
             session.getTransaction().rollback();
             return false;
         }
@@ -59,7 +58,7 @@ public class FilesRepository {
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error" + e.getMessage());
             session.getTransaction().rollback();
             return false;
         }

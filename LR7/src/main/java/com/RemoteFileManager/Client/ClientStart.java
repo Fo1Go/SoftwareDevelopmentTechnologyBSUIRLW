@@ -1,12 +1,9 @@
 package com.RemoteFileManager.Client;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class ClientStart {
     public static void main(String[] args) {
         // Client starts
-        int PORT = 9999;
+        int PORT = 8888;
         String HOST = "127.0.0.1";
         Client client = new Client();
         // Connecting to proxy server

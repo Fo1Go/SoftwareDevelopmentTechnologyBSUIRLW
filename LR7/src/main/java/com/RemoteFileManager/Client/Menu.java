@@ -1,12 +1,9 @@
 package com.RemoteFileManager.Client;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-@Component
 public class Menu {
     public void startMenu(Client client) {
         Scanner scanner = new Scanner(System.in);
@@ -17,14 +14,14 @@ public class Menu {
                 1. Add new catalog
                 2. Add new file
                 3. Watch all directory.
-                4. Find files by extension""";
+                4. Find files by extension
+                5. Reconnect to server""";
         System.out.println(msg);
         command = scanner.nextInt();
 
         if (command == 0) {
-            Menu.sendMessage(client, String.format("%d", command));
-        }
-        else if (command == 1) {
+            Menu.sendMessage(client, "stop");
+        } else if (command == 1) {
             String name = null;
             String catalog = null;
             Integer catalog_number = null;
@@ -38,9 +35,8 @@ public class Menu {
                     catalog = Menu.askCatalog(client, catalog_number);
                 }
             } while (name == null || catalog == null);
-            Menu.sendMessage(client, String.format("%d|%s|%s", command, catalog, name));
-        }
-        else if (command == 2) {
+            Menu.sendMessage(client, String.format("newCatalog|%s|%s", catalog, name));
+        } else if (command == 2) {
             String name = null;
             String catalog = null;
             Integer catalog_number = null;
@@ -56,15 +52,14 @@ public class Menu {
                 if (size == null)
                     size = Menu.askLong(scanner, "Enter size: ");
             } while (name == null || catalog == null || size == null);
-            Menu.sendMessage(client, String.format("%d|%s|%s|%d", command, name, catalog, size));
-        }
-        else if (command == 3) {
+            Menu.sendMessage(client, String.format("newFile|%s|%s|%d", name, catalog, size));
+        } else if (command == 3) {
             ArrayList<String> catalogs;
             try {
                 catalogs = Menu.getAllCatalogs(client);
                 if (catalogs != null)
                     for (String catalog : catalogs)
-                            System.out.println(catalog);
+                        System.out.println(catalog);
             } catch (Exception ex) {
                 Menu.printTraceback(ex);
             }
@@ -77,7 +72,9 @@ public class Menu {
                 extension = askString(scanner, "Enter extension: ");
                 isRecurse = Menu.askBoolean(scanner, "Enter (true/false): ");
             } while (catalog == null || extension == null || isRecurse == null);
-            Menu.sendMessage(client, String.format("%d|%s|%s|%b", command, catalog, extension, isRecurse));
+            Menu.sendMessage(client, String.format("findFilesByExtension|%s|%s|%b", catalog, extension, isRecurse));
+        } else if (command == 5) {
+            System.out.println("Reconnecting...");
         } else {
             System.out.println("Unknown command!");
         }
