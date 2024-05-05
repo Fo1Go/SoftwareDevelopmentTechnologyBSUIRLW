@@ -1,4 +1,4 @@
-package LR7;
+package LR7_demo;
 
 import java.net.*;
 import java.io.*;

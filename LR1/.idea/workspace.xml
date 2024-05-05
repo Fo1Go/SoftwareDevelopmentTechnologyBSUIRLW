@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b69e5a45-1ebf-4fbb-8354-cf3ae3abc687" name="Changes" comment="" />
+    <list default="true" id="b69e5a45-1ebf-4fbb-8354-cf3ae3abc687" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../LR7/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/AbstractCatalog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/AbstractFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/Catalog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/ExecutableFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/File.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/LR7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/Models/Files.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/Repository/FilesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/interfaces/Executable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/interfaces/LocationInCatalog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/interfaces/Nameable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/interfaces/PathToCatalog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/interfaces/Sizable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/java/com/gh/utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LR7/src/test/java/com/example/lr7/Lr7ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LR7/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LR7_demo/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LR7/LR7.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LR7_demo/LR7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LR7/Proxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LR7_demo/Proxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LR7/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LR7_demo/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,30 +39,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2dfucIi726rWMOtK4uKcSWwRZqo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/information/university/TDSW",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/information/university/TDSW&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -46,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710411532426</updated>
       <workItem from="1710411533615" duration="37000" />
+      <workItem from="1713644711301" duration="7000" />
     </task>
     <servers />
   </component>

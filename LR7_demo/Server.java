@@ -1,4 +1,4 @@
-package LR7;
+package LR7_demo;
 
 import java.net.*;
 import java.io.*;
@@ -11,14 +11,15 @@ public class Server {
 
     public void start(int port) throws IOException {
         serverSocket = new ServerSocket(port);
-        clientSocket = serverSocket.accept();
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String greeting = in.readLine();
-        if ("hello server".equals(greeting)) {
-            out.println("hello client");
-        } else {
-            out.println("unrecognised greeting");
+        while (true) {
+            clientSocket = serverSocket.accept();
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            String request = in.readLine();
+            if (request == null)
+                break;
+
+            out.println("123321");
         }
     }
 

@@ -1,4 +1,4 @@
-package LR7;
+package LR7_demo;
 
 // Использовать предметную область по варианту из задания к лабораторной работе №4.
 // В каждом из заданий необходимо выполнить следующие действия:
@@ -15,7 +15,7 @@ public class LR7 {
             Client client = new Client();
             client.startConnection("127.0.0.1", 8080);
             String response = client.sendMessage("hello server");
-            System.out.println("hello client" + response);
+            System.out.println("Response: " + response);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
